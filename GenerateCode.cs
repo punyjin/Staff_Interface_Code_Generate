@@ -211,7 +211,7 @@ namespace RLCM_Staff_Interface
                         cmd.ExecuteNonQuery();
                     }
                 }
-                //string HookDC = "https://discord.com/api/webhooks/1138928401571385404/Qw7C8MZiL2Hs9YAIuBh5NYwSlUF72sFRWzdGnz1POM15NIVPM_aKh05g8vWou6gtvTYb";
+                //string HookDC = "Discord Hook API Token";
                 //send_message_discord(HookDC,TB_ResultCode.Text,"Admin SQL Using Alert System"); //ส่งข้อมูลแจ้งเตือนถึงการใช้งานโปรแกรมหลังบ้านไปยังผู้ดูแลระบบ เพื่อเก็บประวัติการใช้งานผ่าน Discord Webhook
                 MessageBox.Show("อัพเดทข้อมูลเสร็จสิ้น !");
                 SQL_Connect(); // เรียกฟังก์ชันรีเฟรชข้อมูลใน DataGridView
