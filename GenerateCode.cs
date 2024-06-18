@@ -125,7 +125,8 @@ namespace RLCM_Staff_Interface
             NUP_Data.Hide();
             Amount.Hide();
             RB_OTU.Checked = true;
-            
+            this.Size = new Size(1052, 527);
+
         }
         public void SQL_Connect()
         {

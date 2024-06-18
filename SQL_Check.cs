@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,8 +18,25 @@ namespace RLCM_Staff_Interface
         public SQL_Check()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.MouseDown += new MouseEventHandler(SQL_Check_MouseDown);
         }
+        // Import ฟังก์ชัน ReleaseCapture และ SendMessage จาก user32.dll
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
 
+        [DllImport("user32.dll")]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        private void SQL_Check_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, (IntPtr)HT_CAPTION, IntPtr.Zero);
+            }
+        }
         private void SQL_Check_Load(object sender, EventArgs e)
         {
             txtPassword.PasswordChar = 'X';
@@ -75,6 +93,16 @@ namespace RLCM_Staff_Interface
             {
                 txtPassword.PasswordChar = 'X';
             }
+        }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
