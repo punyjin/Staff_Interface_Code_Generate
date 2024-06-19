@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace RLCM_Staff_Interface
                 txtUsername.Text = Properties.Settings.Default.Username;
                 txtPassword.Text = Properties.Settings.Default.Password;
             }
-            
+            CheckForUpdatesAuto();
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -103,6 +104,74 @@ namespace RLCM_Staff_Interface
         private void btn_minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void lblCheckForUpdates_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CheckForUpdatesButton();
+        }
+        private async Task CheckForUpdatesButton()
+        {
+            string currentVersion = Application.ProductVersion;
+            string latestVersion = string.Empty;
+            string updateUrl = "http://localhost/latest_version.txt"; // URL ไปยังไฟล์เวอร์ชันของคุณ
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    latestVersion = await client.GetStringAsync(updateUrl);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("เกิดข้อผิดพลาด : " + ex.Message, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (currentVersion != latestVersion.Trim())
+            {
+                DialogResult result = MessageBox.Show($"มีเวอร์ชั่นใหม่ ({latestVersion.Trim()}) \nคุณต้องการดาวน์โหลดตอนนี้เลยมั้ย ?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    // เปิด URL อัปเดตในเว็บเบราว์เซอร์เริ่มต้น
+                    System.Diagnostics.Process.Start("http://localhost/download");
+                }
+            }
+            else
+            {
+                MessageBox.Show("คุณกำลังใช้เวอร์ชันล่าสุดแล้ว !", "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private async Task CheckForUpdatesAuto()
+        {
+            string currentVersion = Application.ProductVersion;
+            string latestVersion = string.Empty;
+            string updateUrl = "http://localhost/latest_version.txt"; // URL ไฟล์เวอร์ชั่น ข้างในไฟล์จะเป็น 1.0.0.0 แล้วแต่เวอร์ชั่น ใน Assembly
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    latestVersion = await client.GetStringAsync(updateUrl);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("เกิดข้อผิดพลาด : " + ex.Message, "Update Check", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (currentVersion != latestVersion.Trim())
+            {
+                DialogResult result = MessageBox.Show($"มีเวอร์ชั่นใหม่ ({latestVersion.Trim()}) \nคุณต้องการดาวน์โหลดตอนนี้เลยมั้ย ?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    // เปิด URL อัปเดตในเว็บเบราว์เซอร์เริ่มต้น
+                    System.Diagnostics.Process.Start("http://localhost/download");
+                }
+            }
+            
         }
     }
 }

@@ -42,6 +42,7 @@
             this.PB1 = new System.Windows.Forms.PictureBox();
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_minimize = new System.Windows.Forms.Button();
+            this.lblCheckForUpdates = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.PB1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,11 +160,23 @@
             this.btn_minimize.UseVisualStyleBackColor = true;
             this.btn_minimize.Click += new System.EventHandler(this.btn_minimize_Click);
             // 
+            // lblCheckForUpdates
+            // 
+            this.lblCheckForUpdates.AutoSize = true;
+            this.lblCheckForUpdates.Location = new System.Drawing.Point(295, 331);
+            this.lblCheckForUpdates.Name = "lblCheckForUpdates";
+            this.lblCheckForUpdates.Size = new System.Drawing.Size(76, 13);
+            this.lblCheckForUpdates.TabIndex = 13;
+            this.lblCheckForUpdates.TabStop = true;
+            this.lblCheckForUpdates.Text = "Check Update";
+            this.lblCheckForUpdates.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblCheckForUpdates_LinkClicked);
+            // 
             // SQL_Check
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 353);
+            this.Controls.Add(this.lblCheckForUpdates);
             this.Controls.Add(this.btn_minimize);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.checkBox1);
@@ -203,6 +216,7 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button btn_exit;
         private System.Windows.Forms.Button btn_minimize;
+        private System.Windows.Forms.LinkLabel lblCheckForUpdates;
     }
 }
 
