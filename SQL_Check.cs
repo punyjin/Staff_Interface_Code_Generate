@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +16,8 @@ namespace RLCM_Staff_Interface
 {
     public partial class SQL_Check : Form
     {
+        public string updateUrl = "http://localhost/latest_version.txt"; // URL ไฟล์เวอร์ชั่น ข้างในไฟล์จะเป็น 1.0.0.0 แล้วแต่เวอร์ชั่น ใน Assembly
+        public string URL_Download = "http://localhost/download/RLCM_Staff_Interface.exe"; //ลิ้งค์ไฟล์ Build.exe
         public SQL_Check()
         {
             InitializeComponent();
@@ -114,7 +116,7 @@ namespace RLCM_Staff_Interface
         {
             string currentVersion = Application.ProductVersion;
             string latestVersion = string.Empty;
-            string updateUrl = "http://localhost/latest_version.txt"; // URL ไปยังไฟล์เวอร์ชันของคุณ
+            
 
             using (HttpClient client = new HttpClient())
             {
@@ -135,7 +137,7 @@ namespace RLCM_Staff_Interface
                 if (result == DialogResult.Yes)
                 {
                     // เปิด URL อัปเดตในเว็บเบราว์เซอร์เริ่มต้น
-                    System.Diagnostics.Process.Start("http://localhost/download");
+                    System.Diagnostics.Process.Start($"{URL_Download}");
                 }
             }
             else
@@ -147,7 +149,7 @@ namespace RLCM_Staff_Interface
         {
             string currentVersion = Application.ProductVersion;
             string latestVersion = string.Empty;
-            string updateUrl = "http://localhost/latest_version.txt"; // URL ไฟล์เวอร์ชั่น ข้างในไฟล์จะเป็น 1.0.0.0 แล้วแต่เวอร์ชั่น ใน Assembly
+            
 
             using (HttpClient client = new HttpClient())
             {
@@ -168,7 +170,7 @@ namespace RLCM_Staff_Interface
                 if (result == DialogResult.Yes)
                 {
                     // เปิด URL อัปเดตในเว็บเบราว์เซอร์เริ่มต้น
-                    System.Diagnostics.Process.Start("http://localhost/download");
+                    System.Diagnostics.Process.Start($"{URL_Download}");
                 }
             }
             
