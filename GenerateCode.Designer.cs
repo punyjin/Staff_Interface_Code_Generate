@@ -68,6 +68,7 @@
             this.rb_website = new System.Windows.Forms.RadioButton();
             this.rb_item = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cb_daysecond = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NUP_Data)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -285,7 +286,7 @@
             this.groupBox2.Controls.Add(this.RB_Web_Item);
             this.groupBox2.Controls.Add(this.RB_Ingame_Eco);
             this.groupBox2.Controls.Add(this.RB_Web_Eco);
-            this.groupBox2.Location = new System.Drawing.Point(7, 245);
+            this.groupBox2.Location = new System.Drawing.Point(7, 295);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(330, 68);
             this.groupBox2.TabIndex = 24;
@@ -309,7 +310,7 @@
             this.gb_amount.Controls.Add(this.RB_MU);
             this.gb_amount.Controls.Add(this.NUP_Data);
             this.gb_amount.Controls.Add(this.Amount);
-            this.gb_amount.Location = new System.Drawing.Point(150, 319);
+            this.gb_amount.Location = new System.Drawing.Point(150, 369);
             this.gb_amount.Name = "gb_amount";
             this.gb_amount.Size = new System.Drawing.Size(187, 100);
             this.gb_amount.TabIndex = 25;
@@ -375,7 +376,7 @@
             // 
             this.btn_info_code_alert.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_info_code_alert.BackgroundImage")));
             this.btn_info_code_alert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_info_code_alert.Location = new System.Drawing.Point(294, 118);
+            this.btn_info_code_alert.Location = new System.Drawing.Point(294, 139);
             this.btn_info_code_alert.Name = "btn_info_code_alert";
             this.btn_info_code_alert.Size = new System.Drawing.Size(30, 25);
             this.btn_info_code_alert.TabIndex = 33;
@@ -385,7 +386,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 159);
+            this.label7.Location = new System.Drawing.Point(18, 148);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(28, 13);
             this.label7.TabIndex = 32;
@@ -393,14 +394,14 @@
             // 
             // tb_alert
             // 
-            this.tb_alert.Location = new System.Drawing.Point(59, 155);
+            this.tb_alert.Location = new System.Drawing.Point(52, 144);
             this.tb_alert.Name = "tb_alert";
             this.tb_alert.Size = new System.Drawing.Size(235, 20);
             this.tb_alert.TabIndex = 31;
             // 
             // rtb_seq_result
             // 
-            this.rtb_seq_result.Location = new System.Drawing.Point(7, 319);
+            this.rtb_seq_result.Location = new System.Drawing.Point(7, 369);
             this.rtb_seq_result.Name = "rtb_seq_result";
             this.rtb_seq_result.Size = new System.Drawing.Size(137, 100);
             this.rtb_seq_result.TabIndex = 49;
@@ -434,7 +435,7 @@
             this.gb_Catagory.Controls.Add(this.rb_website);
             this.gb_Catagory.Controls.Add(this.rb_item);
             this.gb_Catagory.Controls.Add(this.btn_info_code_catagory);
-            this.gb_Catagory.Location = new System.Drawing.Point(7, 193);
+            this.gb_Catagory.Location = new System.Drawing.Point(7, 243);
             this.gb_Catagory.Name = "gb_Catagory";
             this.gb_Catagory.Size = new System.Drawing.Size(330, 46);
             this.gb_Catagory.TabIndex = 52;
@@ -465,17 +466,31 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cb_daysecond);
             this.groupBox3.Controls.Add(this.btn_info_code_name);
             this.groupBox3.Controls.Add(this.btn_info_code);
             this.groupBox3.Controls.Add(this.btn_info_code_id);
             this.groupBox3.Controls.Add(this.btn_info_code_days);
             this.groupBox3.Controls.Add(this.btn_info_code_alert);
+            this.groupBox3.Controls.Add(this.tb_alert);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Location = new System.Drawing.Point(7, 34);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(330, 153);
+            this.groupBox3.Size = new System.Drawing.Size(330, 203);
             this.groupBox3.TabIndex = 54;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Generate Code System For Admin";
+            // 
+            // cb_daysecond
+            // 
+            this.cb_daysecond.AutoSize = true;
+            this.cb_daysecond.Location = new System.Drawing.Point(52, 121);
+            this.cb_daysecond.Name = "cb_daysecond";
+            this.cb_daysecond.Size = new System.Drawing.Size(106, 17);
+            this.cb_daysecond.TabIndex = 55;
+            this.cb_daysecond.Text = "Days To Second";
+            this.cb_daysecond.UseVisualStyleBackColor = true;
+            this.cb_daysecond.CheckedChanged += new System.EventHandler(this.CB_DaySecond_CheckedChanged_1);
             // 
             // GenerateCode
             // 
@@ -489,8 +504,6 @@
             this.Controls.Add(this.btn_sql_send);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.rtb_seq_result);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.tb_alert);
             this.Controls.Add(this.gb_amount);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label5);
@@ -518,6 +531,7 @@
             this.gb_Catagory.ResumeLayout(false);
             this.gb_Catagory.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,5 +577,6 @@
         private System.Windows.Forms.RadioButton rb_website;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btn_codetype_info;
+        private System.Windows.Forms.CheckBox cb_daysecond;
     }
 }

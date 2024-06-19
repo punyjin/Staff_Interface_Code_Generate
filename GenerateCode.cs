@@ -85,7 +85,7 @@ namespace RLCM_Staff_Interface
                 }
                 // Get countNumber from NumericUpDown
                 int countNumber = (int)NUP_Data.Value;
-
+                if (cb_daysecond.Checked == true) { itemDay = itemDay * 86400; }
                 string codeAlert = tb_alert.Text;
 
                 // Insert data into item_code and item_code_log tables
@@ -418,6 +418,9 @@ namespace RLCM_Staff_Interface
             //ฟีเจอร์ในอนาคต
         }
 
-        
+        private void CB_DaySecond_CheckedChanged_1(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
